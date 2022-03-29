@@ -66,6 +66,10 @@ class Filters extends BaseConfig
                 'users/*',
                 'guru',
                 'guru/*',
+                'piket',
+                'piket/*',
+                'admin',
+                'admin/*',
             ]
         ]
     ];

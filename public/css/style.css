@@ -40,6 +40,9 @@ body {
   text-align: center;
   line-height: 50px;
 }
+.table-container {
+  overflow: auto;
+}
 .sidebar .logo-details .logo_name {
   font-size: 22px;
   color: #fff;
@@ -322,6 +325,54 @@ body {
 .card-mode-hp {
   display: none;
 }
+.border-scan {
+  animation: scan 2s infinite forwards;
+  opacity: 0.8;
+}
+.tampilan-login {
+  width: 23rem;
+  height: 350px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-family: "Zen Kurenaido", sans-serif;
+  box-shadow: -1px -1px 15px rgb(206, 206, 206);
+  border-radius: 15px;
+}
+.profil-mode-hp {
+  display: none;
+}
+.profil-mode-dekstop {
+  display: inline;
+}
+.lingkaran-absen {
+  animation: lingkaran 1s infinite forwards;
+}
+.tenggat-absen {
+  animation: lingkaran 1s infinite forwards;
+}
+@keyframes scan {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+@keyframes lingkaran {
+  0% {
+    color: red;
+  }
+  100% {
+    color: black;
+  }
+}
 @media screen and (max-width: 860px) {
   .card-1-users {
     width: 100%;
@@ -380,5 +431,44 @@ body {
   }
   #jam {
     display: none;
+  }
+  .form-password {
+    width: 80%;
+    height: 270px;
+  }
+  .form-password form input {
+    font-size: 10px;
+  }
+  .form-password h3 {
+    color: #212529;
+    padding-top: 10%;
+  }
+  .form-password p {
+    font-size: 13px;
+  }
+  .form-password form input {
+    font-size: 10px;
+  }
+  .gambar-profil {
+    display: none;
+  }
+  .profil-hp {
+    text-align: center;
+  }
+  .tampilan-login {
+    width: 90%;
+    height: 340px;
+  }
+  .profil-mode-hp {
+    display: inline;
+  }
+  .profil-mode-dekstop {
+    display: none;
+  }
+}
+@media screen and (max-width: 355px) {
+  .tampilan-login {
+    width: 90%;
+    height: 320px;
   }
 }

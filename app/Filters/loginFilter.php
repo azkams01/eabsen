@@ -10,7 +10,7 @@ class loginFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session('NIS') and !session('NIP')) {
+        if (!session('NIS') and !session('NIP') and !session('username')) {
             return redirect()->to(site_url('/auth/login'));
         }
     }

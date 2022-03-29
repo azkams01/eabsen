@@ -49,8 +49,18 @@ class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
 
-        // Untuk Memanggil Akun Siswa Disemua Controller
+        session();
         $this->akunSiswaModel = new \App\Models\AkunSiswaModel();
+        $this->absensiModel = new \App\Models\AbsensiModel();
+        $this->faqModel = new \App\Models\FaqModel();
+        $this->pesanSaranModel = new \App\Models\PesanSaranModel();
+        $this->pemberitahuanModel = new \App\Models\PemberitahuanModel();
+        $this->tanggalLiburModel = new \App\Models\TanggalLiburModel();
+        $this->tenggatAbsenModel = new \App\Models\TenggatAbsenModel();
+        $this->akunGuruModel = new \App\Models\AkunGuruModel();
+        $this->logAktivitasModel = new \App\Models\LogAktivitasModel();
         $this->db = \config\Database::connect();
+        $this->request = \Config\Services::request();
+        $this->agent = $this->request->getUserAgent();
     }
 }

@@ -10,28 +10,39 @@
             'success'
         ).then((result) => {
             if (result.value == true) {
-                document.location.href = '/users/profil'
+                document.location.href = '<?= base_url() ?>/users/absen'
             }
-            document.location.href = '/users/profil'
+            document.location.href = '<?= base_url() ?>/users/absen'
         })
     </script>
-    ";
 <?php } ?>
 
-<div class="container" style="width: 50rem; margin-top: 20px;">
+<div class="container" style="width: 100%; margin-top: 20px;">
     <div class="row">
         <div class="col">
             <div class="card mb-3">
-                <img src="/img/header-profil.jpg" class="card-img-top" alt="..." style="height: 200px;">
-                <div class="card-body">
+                <!-- <img src="<?= base_url() ?>/img/header-profil.jpg" class="card-img-top gambar-profil" alt="..." style="height: 200px;"> -->
+                <div class="card-body profil-mode-dekstop">
                     <div class="row">
                         <div class="col-md-2">
-                            <img src="/img/<?php echo akunSiswa()->Foto ?>" class="img-thumbnail" alt="..." style="border-radius: 20px;">
+                            <img src="<?= base_url() ?>/img/<?php echo akunSiswa()->Foto_siswa ?>" class="img-thumbnail" alt="..." style="border-radius: 20px;">
                         </div>
-                        <div class="col-md-10">
-                            <h5 class="card-title"><?php echo akunSiswa()->Nama ?></h5>
+                        <div class="col-md-10 profil-hp">
+                            <h5 class="card-title" style="padding-top: 10px;"><?php echo akunSiswa()->Nama_siswa ?></h5>
                             <p class="card-text"><?php echo akunSiswa()->NIS ?></p>
-                            <a href="/users/pengaturan"><button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-cog"></i> Pengaturan</button></a>
+                            <a href="<?= base_url() ?>/users/pengaturan"><button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-cog"></i> Pengaturan</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body text-center profil-mode-hp">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="<?= base_url() ?>/img/<?php echo akunSiswa()->Foto_siswa ?>" class="img-thumbnail" alt="..." style="border-radius: 20px;">
+                        </div>
+                        <div class="col-md-10 profil-hp">
+                            <h5 class="card-title" style="padding-top: 10px;"><?php echo akunSiswa()->Nama_siswa ?></h5>
+                            <p class="card-text"><?php echo akunSiswa()->NIS ?></p>
+                            <a href="<?= base_url() ?>/users/pengaturan"><button type="button" class="btn btn-secondary btn-sm"><i class="fas fa-cog"></i> Pengaturan</button></a>
                         </div>
                     </div>
                 </div>
@@ -56,7 +67,7 @@
                                 </div>
                                 <div class="col">
                                     <p>
-                                        <font style="opacity: 0.5;">Nomor Induk Siswa</font><br> <strong style="opacity: 0.7;">1906510222</strong>
+                                        <font style="opacity: 0.5;">Nomor Induk Siswa</font><br> <strong style="opacity: 0.7;"><?= akunSiswa()->NIS; ?></strong>
                                     </p>
                                 </div>
                             </div>
@@ -69,10 +80,10 @@
                                 <div class="col">
                                     <p>
                                         <font style="opacity: 0.5;">Email</font><br> <strong style="opacity: 0.7;">
-                                            <?php if (akunSiswa()->Email == "") {
+                                            <?php if (akunSiswa()->Email_siswa == "") {
                                                 echo "Tidak Ada Data";
                                             } else {
-                                                echo akunSiswa()->Email;
+                                                echo akunSiswa()->Email_siswa;
                                             } ?></strong>
                                     </p>
                                 </div>
@@ -86,10 +97,10 @@
                                 <div class="col">
                                     <p>
                                         <font style="opacity: 0.5;">Nomor</font><br> <strong style="opacity: 0.7;">
-                                            <?php if (akunSiswa()->NomorHp == "0") {
+                                            <?php if (akunSiswa()->NomorHp_siswa == "0") {
                                                 echo "Tidak Ada Data";
                                             } else {
-                                                echo akunSiswa()->NomorHp;
+                                                echo akunSiswa()->NomorHp_siswa;
                                             } ?></strong>
                                     </p>
                                 </div>
@@ -108,10 +119,10 @@
                                 <div class="col">
                                     <p>
                                         <font style="opacity: 0.5;">Alamat</font><br> <strong style="opacity: 0.7;">
-                                            <?php if (akunSiswa()->Alamat == "") {
+                                            <?php if (akunSiswa()->Alamat_siswa == "") {
                                                 echo "Tidak Ada Data";
                                             } else {
-                                                echo akunSiswa()->Alamat;
+                                                echo akunSiswa()->Alamat_siswa;
                                             } ?></strong>
                                     </p>
                                 </div>
@@ -125,10 +136,10 @@
                                 <div class="col">
                                     <p>
                                         <font style="opacity: 0.5;">Jenis Kelamin</font><br> <strong style="opacity: 0.7;">
-                                            <?php if (akunSiswa()->JenisKelamin == "") {
+                                            <?php if (akunSiswa()->JenisKelamin_siswa == "") {
                                                 echo "Tidak Ada Data";
                                             } else {
-                                                echo akunSiswa()->JenisKelamin;
+                                                echo akunSiswa()->JenisKelamin_siswa;
                                             } ?></strong>
                                     </p>
                                 </div>

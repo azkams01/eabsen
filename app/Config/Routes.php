@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Auth::onepage');
 $routes->get('/users', 'Users::dashboard');
 $routes->get('/guru', 'Guru::dashboard');
+$routes->get('/admin', 'Admin::dashboard');
+$routes->get('/piket', 'Piket::absen');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

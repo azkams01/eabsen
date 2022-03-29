@@ -3,304 +3,391 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <title><?= $title ?></title>
+  <!-- logo web -->
+  <link rel="shortcut icon" href="<?= base_url() ?>/img/logo.png" type="image/ico">
 
-    <title><?php echo $title ?></title>
+  <!-- Bootstrap core CSS -->
+  <link href="<?= base_url() ?>/onepage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
 
-    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.css">
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="<?= base_url() ?>/onepage/assets/css/fontawesome.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/onepage/assets/css/templatemo-digimedia-v3.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/onepage/assets/css/animated.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/onepage/assets/css/owl.css">
+  <script src="<?= base_url() ?>/js/sweetalert2.all.min.js"></script>
+  <!--
 
-    <link rel="stylesheet" href="/assets/css/templatemo-training-studio.css">
-    <link rel="stylesheet" href="css/fontAweskills.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="shortcut icon" href="/img/logo.png" type="image/ico">
+TemplateMo 568 DigiMedia
 
+https://templatemo.com/tm-568-digimedia
+
+-->
 </head>
-
-<style>
-    .header-area .main-nav .nav li:hover a,
-    .header-area .main-nav .nav li a.active {
-        color: #17a2b8 !important;
-        opacity: 1;
-    }
-
-    .section-heading h2 em {
-        font-style: normal;
-        color: #17a2b8;
-    }
-
-    .contact-form button:hover {
-        background-color: #23282c;
-    }
-
-    .login:hover {
-        background-color: #23282c;
-    }
-
-    .logo {
-        width: 150px;
-        height: 60px;
-        margin-top: 10px;
-        opacity: 0.4;
-    }
-
-    .video-overlay {
-        height: 100vh;
-    }
-
-    .main-button a {
-        background-color: #17a2b8;
-        border-radius: 5px;
-    }
-
-    .bg1 {
-        height: 100vh;
-        opacity: 0.7;
-        width: 100%;
-    }
-
-    .main-button a:hover {
-        background-color: #23282c;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        padding: 10px 10px;
-        line-height: 20px;
-    }
-
-    @media screen and (max-width: 480px) {
-        .caption h5 {
-            font-size: 12px;
-        }
-
-        .bg1 {
-            height: 100vh;
-            opacity: 0.7;
-            width: 200%;
-            position: relative;
-            left: -50%;
-            top: 70px;
-        }
-    }
-</style>
 
 <body>
 
-    <!-- ***** Preloader Start ***** -->
-    <div id="js-preloader" class="js-preloader">
-        <div class="preloader-inner">
-            <span class="dot"></span>
-            <div class="dots">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+  <?php if (session()->getFlashdata('error')) { ?>
+    <script>
+      Swal.fire(
+        'Maaf !!',
+        '<?= session()->getFlashdata('error'); ?>',
+        'error'
+      ).then((result) => {
+        if (result.value == true) {
+          document.location.href = '<?= base_url() ?>/auth/onepage'
+        }
+        document.location.href = '<?= base_url() ?>/auth/onepage'
+      })
+    </script>
+  <?php } elseif (session()->getFlashdata('success')) { ?>
+    <script>
+      Swal.fire(
+        'Terimakasih :)',
+        '<?= session()->getFlashdata('success'); ?>',
+        'success'
+      ).then((result) => {
+        if (result.value == true) {
+          document.location.href = '<?= base_url() ?>/auth/onepage'
+        }
+        document.location.href = '<?= base_url() ?>/auth/onepage'
+      })
+    </script>
+  <?php } ?>
+
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
-    <!-- ***** Preloader End ***** -->
+  </div>
+  <!-- ***** Preloader End ***** -->
 
-
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <img src="/img/logo-eabsen-text.png" alt="" class="logo">
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Beranda</a></li>
-                            <li class="scroll-to-section"><a href="#features">Tentang</a></li>
-
-                            <li class="scroll-to-section"><a href="#contact-us">Kontak</a></li>
-                            <li class="main-button" style="display: none;"><a href="#">Sign Up</a></li>
-                        </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
-            </div>
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo">
+              <img src="<?= base_url() ?>/onepage/assets/images/logo-v3.png" alt="">
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#top" class="active">Beranda</a></li>
+              <li class="scroll-to-section"><a href="#services">Penggunaan</a></li>
+              <li class="scroll-to-section"><a href="#contact">Kontak</a></li>
+            </ul>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
         </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
-
-    <!-- ***** Main Banner Area Start ***** -->
-    <div class="main-banner" id="top">
-        <img src="/assets/images/background-4.jpg" class="bg1">
-        <div class="video-overlay header-text">
-            <div class="caption">
-                <h5>Absen dengan mudah menggunakan Eabsen </h5>
-                <h2 style="font-size: 5vw;"> presence is one part of <em style="color: #23282c;">success</em></h2>
-                <p id="jam" style="color: white;"></p>
-                <div class="main-button scroll-to-section">
-                    <a href="/auth/login">Login</a>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-    <!-- ***** Main Banner Area End ***** -->
+  </header>
+  <!-- ***** Header Area End ***** -->
 
-    <!-- ***** Features Item Start ***** -->
-    <section class="section" id="features">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading">
-                        <h2>Penggunaan <em> Eabsen </em></h2>
-                        <p style="opacity: 0.8; padding-top: 10px; padding-bottom: 10px;">Eabsen adalah sebuah aplikasi berbasis website yang menyediakan sebuah fitur absen berbasis barcode atau qr-code yang memudahkan siswa untuk mengisi kehadiran.</p>
-                        <img src="/assets/images/line-dec.png" alt="waves">
-
+  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h6>absensi berbasis qr-code</h6>
+                    <div class="col-lg-6">
+                      <div class="right-image wow fadeInRight mode-hp" data-wow-duration="1s" data-wow-delay="0.5s">
+                        <img src="<?= base_url() ?>/onepage/assets/images/Waktu.png" alt="">
+                      </div>
                     </div>
+                    <h2 style="opacity: 0.9;">Presence is one part of success</h2>
+                    <h8>Eabsen atau absensi elektronik adalah sebuah aplikasi berbasis website statis yang memudahkan siswa untuk mengisi kehadiran , rekap nilai , dan memantau kehadiran siswanya disekolah . dilakukan melalui smartphone maupun desktop dengan me - scan QR-Code yang telah disediakan.</h8>
+                  </div>
+                  <div class="col-lg-12 mt-4">
+                    <div class="border-first-button scroll-to-section">
+                      <a href="<?= base_url() ?>/auth/login">
+                        Login
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-lg-6">
-                    <ul class="features-items">
-                        <li class="feature-item">
-                            <div class="left-icon">
-                                <img src="/assets/images/buka web.jpg" alt="First One" style="width: 100px; height: 100px; border-radius: 10px; box-shadow: 1px 1px 5px rgb(255,0,0);">
-                            </div>
-                            <div class="right-content">
-                                <h4>1. Buka website Eabsen</h4>
-                                <p>Anda dapat mengakses di hp , ipad , atau laptop anda dengan tautan berikut : <a href="#">http://xxxxxx</a> </p>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="left-icon">
-                                <img src="/assets/images/user login.jpg" alt="second one" style="width: 100px; height: 100px; border-radius: 10px; box-shadow: 1px 1px 5px rgb(255,0,0);">
-                            </div>
-                            <div class="right-content">
-                                <h4>2. Login</h4>
-                                <p>Login bisa di akses 2 user , bisa menggunakan NIS untuk siswa dan NIP untuk untuk guru</p>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="left-icon">
-                                <img src="/assets/images/profil.jpg" alt="third gym training" style="width: 100px; height: 100px; border-radius: 10px; box-shadow: 1px 1px 5px rgb(255,0,0);">
-                            </div>
-                            <div class="right-content">
-                                <h4>3. Isi profil</h4>
-                                <p>Bagi pengguna yang baru menggunakan website ini , setelah login anda harus mengisi profil dahulu untuk menjalankan fitur absen otomatis</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <ul class="features-items">
-                        <li class="feature-item">
-                            <div class="left-icon">
-                                <img src="/assets/images/user absen.jpg" alt="fourth muscle" style="width: 100px; height: 100px; border-radius: 10px; box-shadow: 1px 1px 5px rgb(255,0,0);">
-                            </div>
-                            <div class="right-content">
-                                <h4>4. Absen</h4>
-                                <p>Jika kalian sudah mengisi profil maka fitur absen otomatis sudah berjalan , hanya tinggal scan qr-code menggunakan scanner</p>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="left-icon">
-                                <img src="/assets/images/ceklis.png" alt="training fifth" style="width: 100px; height: 100px; border-radius: 10px; box-shadow: 1px 1px 5px rgb(255,0,0);">
-                            </div>
-                            <div class="right-content">
-                                <h4>5. Selesai</h4>
-                                <p>Absen anda telah berhasil ( batas waktu absen jam 10 pagi)</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+              </div>
             </div>
-        </div>
-    </section>
-    <!-- ***** Features Item End ***** -->
-
-
-    <!-- ***** Contact Us Area Starts ***** -->
-    <section class="section" id="contact-us">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div id="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9972997187824!2d107.55607371397743!3d-6.890925069344825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6bd6aaaaaab%3A0xf843088e2b5bf838!2sSMK%20Negeri%2011%20Bandung!5e0!3m2!1sid!2sid!4v1613640336251!5m2!1sid!2sid" width="100%" height="600px" frameborder="0" style="border:0" allowfullscreen></iframe>
-
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div class="contact-form">
-                        <h4 style="margin-bottom: 10px; color: white;">Jika ada kesalahan atau kesulitan silahkan mengisi kotak saran dibawah </h4>
-                        <form id="contact">
-                            <div class="col-lg-12">
-                                <fieldset>
-                                    <label for="NIS">Atas nama :</label>
-                                    <input type="text" name="NIS" id="NIS" placeholder="NIS" minlength="10" maxlength="10" required="required">
-                                    <textarea name="pesan" rows="6" id="message" placeholder="Pesan" required="required"></textarea>
-                                </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                                <fieldset>
-                                    <button type="submit" name="submit" id="form-submit" class="main-button" style="background-color: #17a2b8;"> Kirim Pesan</button>
-                                </fieldset> <br>
-                                <p>SMK Negeri 11 Bandung merupakan salah satu Lembaga Pendidikan Menengah Kejuruan di Kota Bandung, Jawa Barat </p> <br>
-
-                                <p>Jl. Budhi Cilember, Bandung, Jawa Barat, Indonesia</p> <br>
-
-                                <p><i class="fas fa-phone-alt"></i>&nbsp; 022-6652442 (telp) </p> <br>
-
-                                <p> <i class="fas fa-envelope"></i> &nbsp; smkn11bdg@gmail.com </p> <br>
-
-                            </div>
-                    </div>
-                    </form>
-                </div>
+            <div class="col-lg-6">
+              <div class="right-image wow fadeInRight mode-dekstop" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="<?= base_url() ?>/onepage/assets/images/Waktu.png" alt="">
+              </div>
             </div>
+          </div>
         </div>
-        </div>
-    </section>
-    <!-- ***** Contact Us Area Ends ***** -->
+      </div>
+    </div>
+  </div>
 
-    <!-- ***** Footer Start ***** -->
-    <footer>
-        <div class="container">
-            <div class="row">
+  <div id="services" class="services section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+            <h6>click a number</h6>
+            <h4>Cara <em>absen QR-Code</em></h4>
+            <div class="line-dec"></div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="naccs">
+            <div class="grid">
+              <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; 2021
+                  <div class="menu">
+                    <div class="first-thumb active">
+                      <div class="thumb">
+                        <span class="icon"><img src="<?= base_url() ?>/onepage/assets/images/service-icon-01.png" alt=""></span>
 
-                        - Designed by <a href="#">BlackPunk</a></p>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">
+                        <span class="icon"><img src="<?= base_url() ?>/onepage/assets/images/service-icon-02.png" alt=""></span>
 
-                    <!-- You shall support us a little via PayPal to info@templatemo.com -->
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">
+                        <span class="icon"><img src="<?= base_url() ?>/onepage/assets/images/service-icon-03.png" alt=""></span>
 
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">
+                        <span class="icon"><img src="<?= base_url() ?>/onepage/assets/images/service-icon-04.png" alt=""></span>
+
+                      </div>
+                    </div>
+                    <div class="last-thumb">
+                      <div class="thumb">
+                        <span class="icon"><img src="<?= base_url() ?>/onepage/assets/images/service-icon-05.png" alt=""></span>
+
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                <div class="col-lg-12">
+                  <ul class="nacc">
+                    <li class="active">
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4>Akses Website eabsen</h4>
+                                <p>Website eabsen dapat diakses dengan browser ( disarankan chrome ) menggunakan device hp , ipad , laptop , pc , dll. (ios belum support untuk fitur scan QR-Code) . </p>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="<?= base_url() ?>/onepage/assets/images/langkah-1.png" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4>Login Sebagai Siswa</h4>
+                                <p>Login menggunakan NIS dan juga Password ( Pastikan sebelumnya data anda telah terdaftar , karena eabsen tidak menyediakan menu registrasi ). Dan demi keamanan anda setelah login kami memaksa anda untuk mengubah password akun anda untuk sekali ubah password , jika ada kesalahan silahkan hubungi admin .</p>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="<?= base_url() ?>/onepage/assets/images/langkah-2.png" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4>Isi Profil</h4>
+                                <p>Syarat siswa bisa absen salah satunya dengan isi profil , karena data yang dimuat nanti diambil dari profil anda . Isi profil hanya dilakukan saat pertama kali membuat akun , pastikan data yang anda masukan benar ya kidss .</p>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="<?= base_url() ?>/onepage/assets/images/langkah-3.png" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4>Absen</h4>
+                                <p>Nahhh jika kalian telah mengikuti urutan dengan tepat , kalian tinggal absen dengan membuka menu absen kemudian pilih opsi absen->absen masuk untuk absen masuk , absen->absen pulang untuk pulang , jika sakit atau izin dapat memilih opsi keterangan lain . Untuk waktu default absennya dari jam 06:00 - 07:15 untuk absen masuk , dan 10:30 - 15:00 untuk absen pulang .</p>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="<?= base_url() ?>/onepage/assets/images/langkah-4.png" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4>Selesai</h4>
+                                <p>Setelah absen selesai , anda dapat melihat history anda di dashboard->data riwayat , untuk info lebih luas tentang eabsen bisa anda lihat di menu faq , Terimakasih .</p>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="<?= base_url() ?>/onepage/assets/images/langkah-5.png" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
 
-    <!-- jQuery -->
-    <script src="/assets/js/jquery-2.1.0.min.js"></script>
+  <div id="contact" class="contact-us section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="section-heading wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+            <h6>give us advice</h6>
+            <h4>Kontak <em>Kami</em></h4>
+            <div class="line-dec"></div>
+          </div>
+        </div>
+        <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+          <form id="contact" action="<?= base_url() ?>/auth/pesan" method="post">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="contact-dec">
+                  <img src="<?= base_url() ?>/onepage/assets/images/contact-dec-v3.png" alt="">
+                </div>
+              </div>
+              <div class="col-lg-5">
+                <div id="map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9972997187824!2d107.55607371397743!3d-6.890925069344825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6bd6aaaaaab%3A0xf843088e2b5bf838!2sSMK%20Negeri%2011%20Bandung!5e0!3m2!1sid!2sid!4v1613640336251!5m2!1sid!2sid" width="100%" height="600px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <div class="fill-form">
+                  <div class="row">
+                    <h5 style="opacity: 0.7;">Jika ada kesalahan atau kesulitan silahkan isi form saran dibawah .</h5>
+                    <div class="col-lg-6">
+                      <fieldset>
+                        <input type="text" name="id_ps" id="id_ps" value="<?= $kode ?>" style="background-color: gray; opacity: 0.5;" readonly>
+                      </fieldset>
+                      <fieldset>
+                        <input type="text" name="NIS" id="NIS" minlength="10" maxlength="10" placeholder="NIS" autocomplete="on" required>
+                      </fieldset>
+                      <fieldset>
+                        <input type="Email" name="email" id="subject" pattern="[^ @]*@[^ @]*" placeholder="Email Anda" autocomplete="on" required>
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-6">
+                      <fieldset>
+                        <textarea name="pesan" type="text" class="form-control" id="pesan" placeholder="Pesan" required=""></textarea>
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <button type="submit" id="form-submit" class="main-button ">Kirim Saran</button>
+                      </fieldset> <br> <br>
+                      <div class="konten-saran" style="text-align:left">
+                        <p>SMK Negeri 11 Bandung merupakan salah satu Lembaga Pendidikan Menengah Kejuruan di Kota Bandung, Jawa Barat </p> <br>
 
-    <!-- Bootstrap -->
-    <script src="/assets/js/popper.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
+                        <p>Jl. Budhi Cilember, Bandung, Jawa Barat, Indonesia</p> <br>
 
-    <!-- Plugins -->
-    <script src="/assets/js/scrollreveal.min.js"></script>
-    <script src="/assets/js/waypoints.min.js"></script>
-    <script src="/assets/js/jquery.counterup.min.js"></script>
-    <script src="/assets/js/imgfix.min.js"></script>
-    <script src="/assets/js/mixitup.js"></script>
-    <script src="/assets/js/accordions.js"></script>
+                        <p><i class="fas fa-phone-alt"></i>&nbsp; 022-6652442 (telp) </p> <br>
 
-    <!-- Global Init -->
-    <script src="/assets/js/custom.js"></script>
+                        <p> <i class="fas fa-envelope"></i> &nbsp; smkn11bdg@gmail.com </p> <br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- javascript sendiri -->
-    <script src="/js/script.js"></script>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2022 Designed by Kelompok 1
+            <!-- <br>Design onepage: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a> -->
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="<?= base_url() ?>/onepage/vendor/jquery/jquery.min.js"></script>
+  <script src="<?= base_url() ?>/onepage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url() ?>/onepage/assets/js/owl-carousel.js"></script>
+  <script src="<?= base_url() ?>/onepage/assets/js/animation.js"></script>
+  <script src="<?= base_url() ?>/onepage/assets/js/imagesloaded.js"></script>
+  <script src="<?= base_url() ?>/onepage/assets/js/custom.js"></script>
+
 </body>
 
 </html>
